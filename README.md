@@ -9,4 +9,7 @@ make clean all
 
 export LD_LIBRARY_PATH=.:$(LD_LIBRARY_PATH)
 ./main
+
+make target/libproject.jar
+java -jar target/libproject.jar
 ```

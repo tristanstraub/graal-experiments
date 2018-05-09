@@ -15,7 +15,7 @@ project: target/libproject.jar
 	native-image -jar $<
 	mv libproject project
 
-target/libproject.jar: src/**/*
+target/libproject.jar: $(wildcard src/**/*) $(wildcard resources/**/*)
 	boot aot --all javac uber jar --main test.core -f libproject.jar target
 
 main.o: main.c libproject.h
@@ -36,5 +36,8 @@ decompile: target/libproject.jar
 .PHONY: run
 run: main
 	export LD_LIBRARY_PATH=.:$(LD_LIBRARY_PATH)
+	echo "Run native"
 	./project
+
+	echo "Run from shared library"
 	./main
