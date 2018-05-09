@@ -7,12 +7,10 @@ clean:
 	rm -fr target
 
 libproject.so libproject.h: target/libproject.jar
-	native-image -H:Kind=SHARED_LIBRARY -H:Name=libproject -jar $<
-
-#  --no-server -H:Dump=
+	native-image --no-server -H:Kind=SHARED_LIBRARY -H:Name=libproject -jar $<
 
 project: target/libproject.jar
-	native-image -jar $<
+	native-image --no-server -jar $<
 	mv libproject project
 
 target/libproject.jar: $(wildcard src/**/*) $(wildcard resources/**/*)
