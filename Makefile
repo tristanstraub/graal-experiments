@@ -31,5 +31,5 @@ decompile: target/libproject.jar
 
 .PHONY: run
 run: main
-	export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH
+	export LD_LIBRARY_PATH=.:$(LD_LIBRARY_PATH)
 	./main
