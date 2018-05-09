@@ -2,6 +2,10 @@
 
 all: libproject.so project main
 
+clean:
+	rm -f main graal_isolate.h graal_isolate_dynamic.h libproject.h libproject.so libproject_dynamic.h main.o project
+	rm -fr target
+
 libproject.so libproject.h: target/libproject.jar
 	native-image -H:Kind=SHARED_LIBRARY -H:Name=libproject -jar $<
 
